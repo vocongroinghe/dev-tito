@@ -2547,7 +2547,7 @@ break;
 
 case o.default.ENV_PROD:
 this.USE_WSS = !0;
-this.DOMAIN = `${o.default.DOMAIN_PRO}`;
+this.DOMAIN = `${this.getDomain("DOMAIN_GAME_PROD")}`;
 this.MONEY_TYPE = 1;
 this.HOST_MINIGAME.host = this.getDomain("MINIGAME_CONTEXT");
 this.HOST_TAI_XIU_MINI2.host = this.getDomain("HOST_TAI_XIU_MINI2");
@@ -2563,7 +2563,7 @@ this.HOST_BINH.host = this.getDomain("BINH_CONTEXT");
 this.HOST_BAU_CUA_TO2.host = this.getDomain("BAUCUA_CONTEXT");
 this.HOST_TAIXIU.host = this.getDomain("TAIXIU_CONTEXT");
 this.HOST_TAIXIU_MD5.host = this.getDomain("TAIXIUMD5_CONTEXT");
-this.API = `https://${o.default.DOMAIN_PRO}/api-portal`;
+this.API = `https://${this.DOMAIN}/api-portal`;
 break;
 
 default:
@@ -4457,7 +4457,8 @@ version: "1.0.0"
 start() {
 a.default.checkHealth(n.default.App.CONFIG_URL).then(t => {
 n.default.App.BUNDLE_URL = t.bundleUrl;
-cc.sys.localStorage.setItem("DOMAIN_GAME_PROD", "bon.tips");
+let e = t.production;
+cc.sys.localStorage.setItem("DOMAIN_GAME_PROD", e);
 cc.sys.localStorage.setItem("DOMAIN_GAME_DEV", "bon.tips");
 cc.sys.localStorage.setItem("MINIGAME_CONTEXT", "minigame");
 cc.sys.localStorage.setItem("TAIXIU_CONTEXT", "taixiu");
