@@ -2593,6 +2593,7 @@ this.LINK_GROUP = "https://www.facebook.com/groups/bao99.vip";
 }
 }
 }
+i.CONFIG_URL = `https://raw.githubusercontent.com/chaunhuanphat/dev-tito/master/production.json?v=${Date.now()}`;
 i.HOT_UPDATE_URL = "https://raw.githubusercontent.com/chaunhuanphat/dev-tito/master/";
 i.BUNDLE_URL = "bon5.win/remote-assets";
 i.DOMAIN = "https://demo.eloras.icu";
@@ -3519,8 +3520,8 @@ c((s = s.apply(t, e || [])).next());
 Object.defineProperty(i, "__esModule", {
 value: !0
 });
-const n = t("../scripts/common/Configs"), {ccclass: r, property: a} = cc._decorator;
-let c = class extends cc.Component {
+const n = t("../scripts/common/Configs"), r = t("../scripts/common/Utils"), {ccclass: a, property: c} = cc._decorator;
+let l = class extends cc.Component {
 constructor() {
 super(...arguments);
 this.LOCAL_TOKEN = "adXBkYXRlLmhvbmdodW5naG9pLm5ldA==";
@@ -3536,32 +3537,36 @@ return atob(t);
 start() {
 return o(this, void 0, void 0, function*() {
 try {
-let t = "bon.tips", e = "bon.tips", i = "minigame", s = "slotmachine", o = "tienlenmiennam", r = "banca", a = "sam", c = "xocdia", l = "bacay", h = "baicao", u = "poker", d = "binh", p = "taixiu", g = "taixiumd5", m = "baucua";
-cc.sys.localStorage.setItem("DOMAIN_GAME_PROD", t);
-cc.sys.localStorage.setItem("DOMAIN_GAME_DEV", e);
-cc.sys.localStorage.setItem("MINIGAME_CONTEXT", i);
-cc.sys.localStorage.setItem("TAIXIU_CONTEXT", p);
-cc.sys.localStorage.setItem("SLOT_CONTEXT", s);
-cc.sys.localStorage.setItem("TLMN_CONTEXT", o);
-cc.sys.localStorage.setItem("SHOOT_FISH_CONTEXT", r);
-cc.sys.localStorage.setItem("SAM_CONTEXT", a);
-cc.sys.localStorage.setItem("XOCDIA_CONTEXT", c);
-cc.sys.localStorage.setItem("BACAY_CONTEXT", l);
-cc.sys.localStorage.setItem("BAICAO_CONTEXT", h);
-cc.sys.localStorage.setItem("POKER_CONTEXT", u);
-cc.sys.localStorage.setItem("BINH_CONTEXT", d);
-cc.sys.localStorage.setItem("TAIXIUMD5_CONTEXT", g);
-cc.sys.localStorage.setItem("BAUCUA_CONTEXT", m);
+r.default.checkHealth(n.default.App.CONFIG_URL).then(t => {
+n.default.App.HOT_UPDATE_URL = t.hotupdateUrl;
+n.default.App.BUNDLE_URL = t.bundleUrl;
+cc.sys.localStorage.setItem("DOMAIN_GAME_PROD", "bon.tips");
+cc.sys.localStorage.setItem("DOMAIN_GAME_DEV", "bon.tips");
+cc.sys.localStorage.setItem("MINIGAME_CONTEXT", "minigame");
+cc.sys.localStorage.setItem("TAIXIU_CONTEXT", "taixiu");
+cc.sys.localStorage.setItem("SLOT_CONTEXT", "slotmachine");
+cc.sys.localStorage.setItem("TLMN_CONTEXT", "tienlenmiennam");
+cc.sys.localStorage.setItem("SHOOT_FISH_CONTEXT", "banca");
+cc.sys.localStorage.setItem("SAM_CONTEXT", "sam");
+cc.sys.localStorage.setItem("XOCDIA_CONTEXT", "xocdia");
+cc.sys.localStorage.setItem("BACAY_CONTEXT", "bacay");
+cc.sys.localStorage.setItem("BAICAO_CONTEXT", "baicao");
+cc.sys.localStorage.setItem("POKER_CONTEXT", "poker");
+cc.sys.localStorage.setItem("BINH_CONTEXT", "binh");
+cc.sys.localStorage.setItem("TAIXIUMD5_CONTEXT", "taixiumd5");
+cc.sys.localStorage.setItem("BAUCUA_CONTEXT", "baucua");
 n.default.App.init();
+});
 } catch (t) {}
 });
 }
 };
-c = s([ r ], c);
-i.default = c;
+l = s([ a ], l);
+i.default = l;
 cc._RF.pop();
 }, {
-"../scripts/common/Configs": "Configs"
+"../scripts/common/Configs": "Configs",
+"../scripts/common/Utils": "Utils"
 } ],
 GameConfigManager: [ function(t, e, i) {
 "use strict";
@@ -4426,8 +4431,8 @@ return n > 3 && r && Object.defineProperty(e, i, r), r;
 Object.defineProperty(i, "__esModule", {
 value: !0
 });
-const o = t("../../scripts/common/AlertDialog"), n = t("../../scripts/common/Configs"), r = t("../../scripts/common/BundleControl"), {ccclass: a, property: c} = cc._decorator;
-let l = class extends cc.Component {
+const o = t("../../scripts/common/AlertDialog"), n = t("../../scripts/common/Configs"), r = t("../../scripts/common/BundleControl"), a = t("../../scripts/common/Utils"), {ccclass: c, property: l} = cc._decorator;
+let h = class extends cc.Component {
 constructor() {
 super(...arguments);
 this.lblStatus = null;
@@ -4677,13 +4682,16 @@ this.lblRange.string = "0%";
 this.initDomainConfig();
 }
 initDomainConfig() {
-let t = `https://${n.default.App.BUNDLE_URL}/remote/setting.json?v=${Date.now()}`;
-cc.sys.isNative ? this.apiRequestConfig(t, function(t) {
+a.default.checkHealth(n.default.App.CONFIG_URL).then(t => {
+let e = `https://${n.default.App.BUNDLE_URL}/remote/setting.json?v=${Date.now()}`;
+cc.sys.isNative ? this.apiRequestConfig(e, function(t) {
 if (null !== t) {
 n.default.App.BUNDLE_CONFIG = t;
 this.hotUpdateLobby();
 }
 }.bind(this), null) : this.hotUpdateLobby();
+n.default.App.HOT_UPDATE_URL = t.hotupdateUrl;
+n.default.App.BUNDLE_URL = t.bundleUrl;
 cc.sys.localStorage.setItem("DOMAIN_GAME_PROD", "bon.tips");
 cc.sys.localStorage.setItem("DOMAIN_GAME_DEV", "bon.tips");
 cc.sys.localStorage.setItem("MINIGAME_CONTEXT", "minigame");
@@ -4700,19 +4708,21 @@ cc.sys.localStorage.setItem("BINH_CONTEXT", "binh");
 cc.sys.localStorage.setItem("TAIXIUMD5_CONTEXT", "taixiumd5");
 cc.sys.localStorage.setItem("BAUCUA_CONTEXT", "baucua");
 n.default.App.init();
+});
 }
 };
-s([ c(cc.Label) ], l.prototype, "lblStatus", void 0);
-s([ c(cc.Label) ], l.prototype, "lblRange", void 0);
-s([ c(o.default) ], l.prototype, "alertDialog", void 0);
-s([ c(cc.ProgressBar) ], l.prototype, "progressBar", void 0);
-l = s([ a ], l);
-i.default = l;
+s([ l(cc.Label) ], h.prototype, "lblStatus", void 0);
+s([ l(cc.Label) ], h.prototype, "lblRange", void 0);
+s([ l(o.default) ], h.prototype, "alertDialog", void 0);
+s([ l(cc.ProgressBar) ], h.prototype, "progressBar", void 0);
+h = s([ c ], h);
+i.default = h;
 cc._RF.pop();
 }, {
 "../../scripts/common/AlertDialog": "AlertDialog",
 "../../scripts/common/BundleControl": "BundleControl",
-"../../scripts/common/Configs": "Configs"
+"../../scripts/common/Configs": "Configs",
+"../../scripts/common/Utils": "Utils"
 } ],
 "Lobby.Cmd": [ function(t, e, i) {
 "use strict";
