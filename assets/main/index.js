@@ -1151,6 +1151,7 @@ let e = t;
 if (cc.sys.isNative) {
 let i = o.default.App.BUNDLE_CONFIG.bundleVers[t];
 e = `https://${o.default.App.BUNDLE_URL}/remote/${t}`;
+console.log(e);
 return new Promise(t => {
 cc.assetManager.loadBundle(e, {
 version: i
@@ -4454,6 +4455,24 @@ version: "1.0.0"
 });
 }
 start() {
+a.default.checkHealth(n.default.App.CONFIG_URL).then(t => {
+n.default.App.BUNDLE_URL = t.bundleUrl;
+cc.sys.localStorage.setItem("DOMAIN_GAME_PROD", "bon.tips");
+cc.sys.localStorage.setItem("DOMAIN_GAME_DEV", "bon.tips");
+cc.sys.localStorage.setItem("MINIGAME_CONTEXT", "minigame");
+cc.sys.localStorage.setItem("TAIXIU_CONTEXT", "taixiu");
+cc.sys.localStorage.setItem("SLOT_CONTEXT", "slotmachine");
+cc.sys.localStorage.setItem("TLMN_CONTEXT", "tienlenmiennam");
+cc.sys.localStorage.setItem("SHOOT_FISH_CONTEXT", "banca");
+cc.sys.localStorage.setItem("SAM_CONTEXT", "sam");
+cc.sys.localStorage.setItem("XOCDIA_CONTEXT", "xocdia");
+cc.sys.localStorage.setItem("BACAY_CONTEXT", "bacay");
+cc.sys.localStorage.setItem("BAICAO_CONTEXT", "baicao");
+cc.sys.localStorage.setItem("POKER_CONTEXT", "poker");
+cc.sys.localStorage.setItem("BINH_CONTEXT", "binh");
+cc.sys.localStorage.setItem("TAIXIUMD5_CONTEXT", "taixiumd5");
+cc.sys.localStorage.setItem("BAUCUA_CONTEXT", "baucua");
+n.default.App.init();
 this.progressBar.progress = 0;
 this.lblStatus.string = "";
 this.lblRange.string = "0%";
@@ -4476,6 +4495,7 @@ this.checkUpdate();
 this.initAssetManager();
 this.checkUpdate();
 }
+});
 }
 initAssetManager() {
 console.log("Storage path for remote asset : " + this._storagePath);
@@ -4682,33 +4702,15 @@ this.lblRange.string = "0%";
 this.initDomainConfig();
 }
 initDomainConfig() {
-a.default.checkHealth(n.default.App.CONFIG_URL).then(t => {
-let e = `https://${n.default.App.BUNDLE_URL}/remote/setting.json?v=${Date.now()}`;
-cc.sys.isNative ? this.apiRequestConfig(e, function(t) {
+if (cc.sys.isNative) {
+let t = `https://${n.default.App.BUNDLE_URL}/remote/setting.json?v=${Date.now()}`;
+this.apiRequestConfig(t, function(t) {
 if (null !== t) {
 n.default.App.BUNDLE_CONFIG = t;
 this.hotUpdateLobby();
 }
-}.bind(this), null) : this.hotUpdateLobby();
-n.default.App.HOT_UPDATE_URL = t.hotupdateUrl;
-n.default.App.BUNDLE_URL = t.bundleUrl;
-cc.sys.localStorage.setItem("DOMAIN_GAME_PROD", "bon.tips");
-cc.sys.localStorage.setItem("DOMAIN_GAME_DEV", "bon.tips");
-cc.sys.localStorage.setItem("MINIGAME_CONTEXT", "minigame");
-cc.sys.localStorage.setItem("TAIXIU_CONTEXT", "taixiu");
-cc.sys.localStorage.setItem("SLOT_CONTEXT", "slotmachine");
-cc.sys.localStorage.setItem("TLMN_CONTEXT", "tienlenmiennam");
-cc.sys.localStorage.setItem("SHOOT_FISH_CONTEXT", "banca");
-cc.sys.localStorage.setItem("SAM_CONTEXT", "sam");
-cc.sys.localStorage.setItem("XOCDIA_CONTEXT", "xocdia");
-cc.sys.localStorage.setItem("BACAY_CONTEXT", "bacay");
-cc.sys.localStorage.setItem("BAICAO_CONTEXT", "baicao");
-cc.sys.localStorage.setItem("POKER_CONTEXT", "poker");
-cc.sys.localStorage.setItem("BINH_CONTEXT", "binh");
-cc.sys.localStorage.setItem("TAIXIUMD5_CONTEXT", "taixiumd5");
-cc.sys.localStorage.setItem("BAUCUA_CONTEXT", "baucua");
-n.default.App.init();
-});
+}.bind(this), null);
+} else this.hotUpdateLobby();
 }
 };
 s([ l(cc.Label) ], h.prototype, "lblStatus", void 0);
