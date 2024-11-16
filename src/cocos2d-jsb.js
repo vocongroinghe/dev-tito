@@ -31892,12 +31892,12 @@ return e.join("");
 232: [ (function(t, e, i) {
 "use strict";
 i.__esModule = !0;
-i.default = G;
+i.default = N;
 i.unpackJSONs = function(t, e) {
 if (t[0] < f) throw new Error(cc.debug.getError(5304, t[0]));
-O(t, !0, e);
-N(t);
-for (var i = new z(t[0]), n = t[1], r = t[2], s = t[3], o = t[4], a = t[b], c = 0; c < a.length; ++c) a[c].unshift(i, n, r, s, o);
+L(t, !0, e);
+V(t);
+for (var i = new F(t[0]), n = t[1], r = t[2], s = t[3], o = t[4], a = t[C], c = 0; c < a.length; ++c) a[c].unshift(i, n, r, s, o);
 return a;
 };
 i.packCustomObjData = function(t, e, i) {
@@ -31945,7 +31945,7 @@ t.width = e[3];
 t.height = e[4];
 }, function(t, e) {
 u.default.fromArray(t, e, 1);
-} ], v = 0, g = 1, x = 2, C = 0, A = 0, b = 5, S = (function() {
+} ], v = 0, g = 1, x = 2, C = 5, A = (function() {
 function t() {
 this.uuidObjList = null;
 this.uuidPropList = null;
@@ -31969,13 +31969,13 @@ this.uuidList.push(i);
 };
 return t;
 })();
-S.pool = new n.default.Pool(function(t) {
+A.pool = new n.default.Pool(function(t) {
 t.reset();
 }, 5);
-S.pool.get = function() {
-return this._get() || new S();
+A.pool.get = function() {
+return this._get() || new A();
 };
-function T(t, e, i) {
+function b(t, e, i) {
 for (var n = t.length - 1, r = 0, s = 3 * t[n]; r < s; r += 3) {
 var o = t[r], a = e[t[r + 2]], c = t[r + 1];
 c >= 0 ? o[i[c]] = a : o[~c] = a;
@@ -31985,127 +31985,127 @@ var l = e[t[r]], h = e[t[r + 2]], u = t[r + 1];
 u >= 0 ? l[i[u]] = h : l[~u] = h;
 }
 }
-function w(t, e) {
-for (var i = t[4][e[A]], n = i[C], r = new (0, n[v])(), s = n[g], o = n[x], a = i[i.length - 1], c = C + 1; c < a; ++c) r[s[i[c]]] = e[c];
+function S(t, e) {
+for (var i = t[4][e[0]], n = i[0], r = new (0, n[v])(), s = n[g], o = n[x], a = i[i.length - 1], c = 1; c < a; ++c) r[s[i[c]]] = e[c];
 for (;c < e.length; ++c) {
 var l = s[i[c]], h = n[i[c] + o];
-(0, P[h])(t, r, l, e[c]);
+(0, I[h])(t, r, l, e[c]);
 }
 return r;
 }
-function E(t, e, i) {
+function T(t, e, i) {
 var r = new e();
 r._deserialize ? r._deserialize(i, t[0]) : cc.errorID(5303, n.default.getClassName(e));
 return r;
 }
-function B(t, e, i, n) {
+function w(t, e, i, n) {
 n >= 0 ? e[i] = t[5][n] : t[7][3 * ~n] = e;
 }
-function M(t) {
+function E(t) {
 return function(e, i, n, r) {
 i[n] = r;
 for (var s = 0; s < r.length; ++s) t(e, r, s, r[s]);
 };
 }
-function I(t, e, i, n) {
+function B(t, e, i, n) {
 e[i] = null;
 t[8][n] = e;
 }
-function D(t, e, i, n) {
-e[i] = w(t, n);
+function M(t, e, i, n) {
+e[i] = S(t, n);
 }
-var P = new Array(13);
-P[0] = function(t, e, i, n) {
+var I = new Array(13);
+I[0] = function(t, e, i, n) {
 e[i] = n;
 };
-P[1] = B;
-P[2] = M(B);
-P[3] = M(I);
-P[4] = D;
-P[5] = function(t, e, i, n) {
+I[1] = w;
+I[2] = E(w);
+I[3] = E(B);
+I[4] = M;
+I[5] = function(t, e, i, n) {
 y[n[0]](e[i], n);
 };
-P[6] = I;
-P[7] = function(t, e, i, n) {
+I[6] = B;
+I[7] = function(t, e, i, n) {
 e[i].set(n);
 };
-P[8] = function(t, e, i, n) {
+I[8] = function(t, e, i, n) {
 var r = new p[n[0]]();
 y[n[0]](r, n);
 e[i] = r;
 };
-P[9] = M(D);
-P[10] = function(t, e, i, n) {
+I[9] = E(M);
+I[10] = function(t, e, i, n) {
 var r = t[3][n[0]];
-e[i] = E(t, r, n[1]);
+e[i] = T(t, r, n[1]);
 };
-P[11] = function(t, e, i, n) {
+I[11] = function(t, e, i, n) {
 var r = n[0];
 e[i] = r;
 for (var s = 1; s < n.length; s += 3) {
 var o = n[s], a = n[s + 1], c = n[s + 2];
-(0, P[a])(t, r, o, c);
+(0, I[a])(t, r, o, c);
 }
 };
-P[12] = function(t, e, i, n) {
+I[12] = function(t, e, i, n) {
 var r = n[0];
 e[i] = r;
 for (var s = 0; s < r.length; ++s) {
 var o = r[s], a = n[s + 1];
-0 !== a && (0, P[a])(t, r, s, o);
+0 !== a && (0, I[a])(t, r, s, o);
 }
 };
-function R(t) {
+function D(t) {
 var e = t[5], i = t[6], n = i === d ? 0 : i.length, r = e[e.length - 1], s = e.length - n;
 if ("number" != typeof r) r = 0; else {
 r < 0 && (r = ~r);
 --s;
 }
-for (var o = 0; o < s; ++o) e[o] = w(t, e[o]);
+for (var o = 0; o < s; ++o) e[o] = S(t, e[o]);
 for (var a = t[3], c = 0; c < n; ++c, ++o) {
 var l = i[c], h = e[o];
 if (l >= 0) {
 var u = a[l];
-e[o] = E(t, u, h);
-} else (0, P[l = ~l])(t, e, o, h);
+e[o] = T(t, u, h);
+} else (0, I[l = ~l])(t, e, o, h);
 }
 return r;
 }
-function L(t, e) {
-t || G.reportMissingClass(e);
+function P(t, e) {
+t || N.reportMissingClass(e);
 return Object;
 }
-function V(t, e, i, n, r, s) {
+function R(t, e, i, n, r, s) {
 var o = t(e);
 if (!o) {
 if (r) {
 i[n] = (function(e, i, n) {
 return function() {
-var r = t(n) || L(s, n);
+var r = t(n) || P(s, n);
 e[i] = r;
 return new r();
 };
 })(i, n, e);
 return;
 }
-o = L(s, e);
+o = P(s, e);
 }
 i[n] = o;
 }
-function O(t, e, i) {
+function L(t, e, i) {
 for (var r = i || n.default._getClassById, s = t[3], o = 0; o < s.length; ++o) {
 var a = s[o];
-"string" != typeof a ? V(r, a[v], a, v, e, i) : V(r, a, s, o, e, i);
+"string" != typeof a ? R(r, a[v], a, v, e, i) : R(r, a, s, o, e, i);
 }
 }
-function N(t) {
+function V(t) {
 var e = t[4];
 if (e) for (var i = t[3], n = 0; n < e.length; ++n) {
 var r = e[n];
-r[C] = i[r[C]];
+r[0] = i[r[0]];
 }
 }
-function F(t) {
+function O(t) {
 for (var e = t[5], i = t[2], n = t[1], r = t[8], s = t[9], o = t[10], a = 0; a < r.length; ++a) {
 var c = r[a];
 "number" == typeof c && (r[a] = e[c]);
@@ -32118,10 +32118,10 @@ var h = o[a];
 "number" == typeof h && (o[a] = n[h]);
 }
 }
-function G(t, e, i) {
+function N(t, e, i) {
 "string" == typeof t && (t = JSON.parse(t));
 var n = !e;
-(e = e || S.pool.get()).init(t);
+(e = e || A.pool.get()).init(t);
 i = i || {};
 var r = t[0], s = !1;
 if ("object" == typeof r) {
@@ -32133,19 +32133,19 @@ i._version = r;
 i.result = e;
 t[0] = i;
 if (!s) {
-O(t, !1, i.classFinder);
-N(t);
+L(t, !1, i.classFinder);
+V(t);
 }
 cc.game._isCloning = !0;
-var o = t[5], a = R(t);
+var o = t[5], a = D(t);
 cc.game._isCloning = !1;
-t[7] && T(t[7], o, t[2]);
-F(t);
-n && S.pool.put(e);
+t[7] && b(t[7], o, t[2]);
+O(t);
+n && A.pool.put(e);
 return o[a];
 }
-G.Details = S;
-var z = function(t) {
+N.Details = A;
+var F = function(t) {
 this.preprocessed = !0;
 this.version = t;
 };

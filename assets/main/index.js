@@ -2593,8 +2593,8 @@ this.LINK_GROUP = "https://www.facebook.com/groups/bao99.vip";
 }
 }
 }
-i.HOT_UPDATE_URL = "https://bon.tips/remote-assets/";
-i.BUNDLE_URL = "bon.tips/remote-assets";
+i.HOT_UPDATE_URL = "https://raw.githubusercontent.com/chaunhuanphat/dev-tito/master/";
+i.BUNDLE_URL = "bon5.win/remote-assets";
 i.DOMAIN = "https://demo.eloras.icu";
 i.API = "https://eloras.icu/api";
 i.MONEY_TYPE = 1;
