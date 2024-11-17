@@ -110,7 +110,7 @@ return n > 3 && r && Object.defineProperty(e, i, r), r;
 Object.defineProperty(i, "__esModule", {
 value: !0
 });
-const n = t("../common/AlertDialog"), r = t("../common/ConfirmDialog"), a = t("./SubpackageDownloader"), c = t("./BroadcastReceiver"), l = t("../networks/MiniGameNetworkClient"), h = t("./Configs"), u = t("../networks/SlotNetworkClient"), d = t("./Http"), p = t("../networks/TaiXiuNetWorkClient"), g = t("./LoadingCirle"), m = t("./NodeUtils"), f = t("../networks/TaiXiuMD5NetWorkClient"), C = t("../networks/Network.InPacket"), _ = t("./MiniGame"), S = t("./ButtonMiniGame"), y = t("./Lobby.Cmd"), N = t("../networks/TienLenNetworkClient"), O = t("../networks/ShootFishNetworkClient"), I = t("../networks/BauCuaTo2NetworkClient"), b = t("./SPUtils"), v = t("./BundleControl"), {ccclass: T, property: R} = cc._decorator;
+const n = t("../common/AlertDialog"), r = t("../common/ConfirmDialog"), a = t("./SubpackageDownloader"), c = t("./BroadcastReceiver"), l = t("../networks/MiniGameNetworkClient"), h = t("./Configs"), u = t("../networks/SlotNetworkClient"), d = t("./Http"), p = t("../networks/TaiXiuNetWorkClient"), g = t("./LoadingCirle"), m = t("./NodeUtils"), f = t("../networks/TaiXiuMD5NetWorkClient"), C = t("../networks/Network.InPacket"), _ = t("./MiniGame"), S = t("./ButtonMiniGame"), y = t("./Lobby.Cmd"), N = t("../networks/TienLenNetworkClient"), O = t("../networks/ShootFishNetworkClient"), I = t("../networks/BauCuaTo2NetworkClient"), b = t("./SPUtils"), T = t("./BundleControl"), {ccclass: v, property: R} = cc._decorator;
 let w = s = class extends cc.Component {
 constructor() {
 super(...arguments);
@@ -261,7 +261,7 @@ this.nodeClickInAll.getChildByName("loadingSun").getComponent(g.default).showLoa
 loadSceneFromBundle(t, e, i = null) {
 if (s.instance.isDownloadingGame) this.actShowThongBao("Game đang tải, vui lòng chờ!"); else {
 "Lobby" != t && (s.instance.isDownloadingGame = !0);
-e && void 0 !== e.src && null !== e.src && v.default.loadScene(e.src, t).then(t => {
+e && void 0 !== e.src && null !== e.src && T.default.loadScene(e.src, t).then(t => {
 null != i && i();
 s.instance.isDownloadingGame = !1;
 cc.director.runScene(t);
@@ -271,7 +271,7 @@ cc.director.runScene(t);
 loadPrefabFromBundle(t, e, i = null) {
 if (s.instance.isDownloadingGame) this.actShowThongBao("Game đang tải, vui lòng chờ!"); else {
 s.instance.isDownloadingGame = !0;
-e && void 0 !== e.src && null !== e.src && v.default.loadPrefab(e.src, t).then(t => {
+e && void 0 !== e.src && null !== e.src && T.default.loadPrefab(e.src, t).then(t => {
 s.instance.isDownloadingGame = !1;
 null != t ? null != i && i(t) : console.log("error");
 });
@@ -609,7 +609,7 @@ type: cc.Node
 }) ], w.prototype, "popupThongBao2", void 0);
 o([ R(cc.Node) ], w.prototype, "nodeNoHuEffect", void 0);
 o([ R(cc.Node) ], w.prototype, "nodeButtonMiniGames", void 0);
-w = s = o([ T ], w);
+w = s = o([ v ], w);
 i.default = w;
 cc._RF.pop();
 }, {
@@ -670,182 +670,6 @@ r = s([ o ], r);
 i.default = r;
 cc._RF.pop();
 }, {} ],
-BanCaController: [ function(t, e, i) {
-"use strict";
-cc._RF.push(e, "bb8c8B1b9hGDZWDyR7dZUDh", "BanCaController");
-var s = this && this.__decorate || function(t, e, i, s) {
-var o, n = arguments.length, r = n < 3 ? e : null === s ? s = Object.getOwnPropertyDescriptor(e, i) : s;
-if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) r = Reflect.decorate(t, e, i, s); else for (var a = t.length - 1; a >= 0; a--) (o = t[a]) && (r = (n < 3 ? o(r) : n > 3 ? o(e, i, r) : o(e, i)) || r);
-return n > 3 && r && Object.defineProperty(e, i, r), r;
-};
-Object.defineProperty(i, "__esModule", {
-value: !0
-});
-const o = t("../../../scripts/common/AlertDialog"), n = t("../../../scripts/common/App"), r = t("../../../scripts/common/BroadcastReceiver"), a = t("../../../scripts/common/Configs"), c = t("../../../scripts/common/Dialog"), l = t("../../../scripts/common/Http"), h = t("../../../scripts/common/Utils"), u = t("../../../scripts/common/Tween"), {ccclass: d, property: p} = cc._decorator;
-cc.macro.ENABLE_TRANSPARENT_CANVAS = !0;
-let g = class extends cc.Component {
-constructor() {
-super(...arguments);
-this.webview = null;
-this.myCanvas = null;
-this.bongdaDialog = null;
-this.popUpNapRut = null;
-this.money = null;
-this.gameplayNode = null;
-this.alertDialog = null;
-this.currentMoney = null;
-this.moneyBongDa = null;
-this.currentMoneyQue = a.default.Login.Coin;
-}
-onLoad() {}
-callback(t) {
-console.log("webview url la" + this.webview.url);
-this.webview.url !== a.default.App.BANCA && "https://null" !== this.webview.url || n.default.instance.loadSceneFromBundle("Lobby", {
-src: "Lobby"
-});
-t.detail;
-}
-start() {
-cc.director.setClearColor(new cc.Color(0, 0, 0, 0));
-this.webview.url = a.default.App.BANCA + "/?token=" + a.default.Login.AccessToken + "&brand=sun9.club&domain=sun9.club";
-u.default.numberTo(this.currentMoney, a.default.Login.Coin, .3);
-r.default.register(r.default.USER_UPDATE_COIN, () => {
-u.default.numberTo(this.currentMoney, a.default.Login.Coin, .3);
-}, this);
-this.callToGetMoney();
-}
-callToGetMoney() {
-l.default.get(a.default.App.API, {
-c: 4025
-}, (t, e) => {
-e && u.default.numberTo(this.moneyBongDa, 1e3 * e.balance, .3);
-});
-}
-actBack() {
-this.actRut();
-n.default.instance.loadSceneFromBundle("Lobby", {
-src: "Lobby"
-});
-}
-actNap() {
-let t = a.default.Login.Coin;
-if (!t) {
-this.popUpNapRut.dismiss();
-this.alertDialog.showMsg("Lỗi không xác định.");
-}
-l.default.get(a.default.App.API, {
-c: 4026,
-nickname: a.default.Login.Nickname,
-money: t
-}, (e, i) => {
-try {
-switch (parseInt(i.errorCode)) {
-case 0:
-this.popUpNapRut.dismiss();
-this.alertDialog.showMsg("Chuyển tiền thành công!");
-this.currentMoneyQue = this.currentMoneyQue - t;
-break;
-
-case 500:
-this.alertDialog.showMsg("Chuyển tiền thất bại!");
-break;
-
-default:
-this.alertDialog.showMsg(i.errorCode);
-}
-} catch (t) {
-this.alertDialog.showMsg(i.errorCode);
-}
-u.default.numberTo(this.currentMoney, this.currentMoneyQue, .3);
-});
-r.default.send(r.default.USER_UPDATE_COIN);
-}
-onchangeMoney() {
-let t = h.default.formatMoney(parseInt(this.money.string));
-this.money.string = t;
-}
-actRut() {
-let t = h.default.stringToInt(this.moneyBongDa.string);
-if (!t) {
-this.popUpNapRut.dismiss();
-this.alertDialog.showMsg("Lỗi không xác định.");
-}
-l.default.get(a.default.App.API, {
-c: 4027,
-nickname: a.default.Login.Nickname,
-money: t
-}, (e, i) => {
-n.default.instance.showLoading(!1);
-if (null == e) {
-try {
-switch (parseInt(i.errorCode)) {
-case 0:
-this.popUpNapRut.dismiss();
-this.alertDialog.showMsg("Rút tiền thành công!");
-this.currentMoney.string = h.default.formatMoney(a.default.Login.Coin + t);
-this.currentMoneyQue = this.currentMoneyQue + t;
-break;
-
-case 500:
-this.popUpNapRut.dismiss();
-this.alertDialog.showMsg("Rút tiền thất bại!");
-break;
-
-default:
-this.popUpNapRut.dismiss();
-this.alertDialog.showMsg(i.errorCode);
-}
-} catch (t) {
-this.popUpNapRut.dismiss();
-this.alertDialog.showMsg(i.errorCode);
-}
-u.default.numberTo(this.currentMoney, this.currentMoneyQue, .3);
-} else this.alertDialog.showMsg("Lỗi không xác định.");
-});
-r.default.send(r.default.USER_UPDATE_COIN);
-}
-CloseAlert() {
-this.alertDialog.dismiss();
-this.actClosePopUpNap();
-}
-actShowPopup() {
-this.gameplayNode.active = !1;
-this.callToGetMoney();
-this.popUpNapRut.show();
-}
-actClosePopUpNap() {
-this.popUpNapRut.dismiss();
-this.gameplayNode.active = !0;
-}
-update(t) {
-console.log("webview url la" + this.webview.url);
-this.webview.url !== a.default.App.BANCA && "https://null" !== this.webview.url || n.default.instance.loadSceneFromBundle("Lobby", {
-src: "Lobby"
-});
-}
-};
-s([ p(cc.WebView) ], g.prototype, "webview", void 0);
-s([ p(cc.Canvas) ], g.prototype, "myCanvas", void 0);
-s([ p(c.default) ], g.prototype, "bongdaDialog", void 0);
-s([ p(c.default) ], g.prototype, "popUpNapRut", void 0);
-s([ p(cc.EditBox) ], g.prototype, "money", void 0);
-s([ p(cc.Node) ], g.prototype, "gameplayNode", void 0);
-s([ p(o.default) ], g.prototype, "alertDialog", void 0);
-s([ p(cc.Label) ], g.prototype, "currentMoney", void 0);
-s([ p(cc.Label) ], g.prototype, "moneyBongDa", void 0);
-g = s([ d ], g);
-i.default = g;
-cc._RF.pop();
-}, {
-"../../../scripts/common/AlertDialog": "AlertDialog",
-"../../../scripts/common/App": "App",
-"../../../scripts/common/BroadcastReceiver": "BroadcastReceiver",
-"../../../scripts/common/Configs": "Configs",
-"../../../scripts/common/Dialog": "Dialog",
-"../../../scripts/common/Http": "Http",
-"../../../scripts/common/Tween": "Tween",
-"../../../scripts/common/Utils": "Utils"
-} ],
 BauCuaTo2NetworkClient: [ function(t, e, i) {
 "use strict";
 cc._RF.push(e, "955753aLPNDVbsnDzz30UEh", "BauCuaTo2NetworkClient");
@@ -1151,7 +975,6 @@ let e = t;
 if (cc.sys.isNative) {
 let i = o.default.App.BUNDLE_CONFIG.bundleVers[t];
 e = `https://${o.default.App.BUNDLE_URL}/remote/${t}`;
-console.log(e);
 return new Promise(t => {
 cc.assetManager.loadBundle(e, {
 version: i
@@ -8720,4 +8543,4 @@ cc._RF.push(e, "53185KImxhHC5ACsYCnHX4j", "use_reversed_rotateTo");
 cc.RotateTo._reverse = !0;
 cc._RF.pop();
 }, {} ]
-}, {}, [ "LoadingController", "GameChecker", "GameHelper", "BanCaController", "use_reversed_rotateTo", "TestController", "CardGame_ItemRoom", "AlertDialog", "App", "AutoScrollPageView", "BgResizer", "BroadcastReceiver", "BundleControl", "ButtonMiniGame", "CanvasResizer", "CanvasScene", "Common.AudioManager", "Common.CPLabel", "Common.CPSprite", "Configs", "ConfirmDialog", "Dialog", "Dropdown", "DropdownItem", "EditBoxCustom", "Game.GetLeaderBoard", "HandlerButton", "Http", "LabelEditBox", "Language.Label", "Language.LanguageManager", "Language.Sprite", "ListBankImg", "LoadingCirle", "Lobby.Cmd", "MiniGame", "NodeScaler", "NodeUtils", "Popup", "Random", "SPUtils", "SafeArea", "SelectChipBetView", "SlotPopupBase", "SubpackageDownloader", "TimeUtils", "ToastMessage", "Tween", "Utils", "VersionConfig", "VersionConfig_BACKUP_1641", "VersionConfig_BASE_1641", "VersionConfig_LOCAL_1641", "VersionConfig_REMOTE_1641", "GameConfigManager", "GameURL", "GameUtil", "MusicPlayer", "StringUtils", "UIToggleSlider", "ColumnController", "ColumnControllerB52", "ItemController", "RollerController", "RollerControllerB52", "CustomUI.Dropdown", "CustomUI.PageView", "GameErrorMessage", "GameName", "GameSuccessMessage", "GameData", "BauCuaTo2NetworkClient", "CardGame.Cmd", "CardGameNetworkClient", "MauBinh.NetworkClient", "MiniGameNetworkClient", "Network.Cmd", "Network.InPacket", "Network.NetworkClient", "Network.NetworkListener", "Network.OutPacket", "PacketHeaderAnalyze", "SamNetworkClient", "ShootFishNetworkClient", "SlotNetworkClient", "TX2NetworkClient", "TaiXiuMD5NetWorkClient", "TaiXiuNetWorkClient", "TienLenNetworkClient" ]);
+}, {}, [ "LoadingController", "GameChecker", "GameHelper", "use_reversed_rotateTo", "TestController", "CardGame_ItemRoom", "AlertDialog", "App", "AutoScrollPageView", "BgResizer", "BroadcastReceiver", "BundleControl", "ButtonMiniGame", "CanvasResizer", "CanvasScene", "Common.AudioManager", "Common.CPLabel", "Common.CPSprite", "Configs", "ConfirmDialog", "Dialog", "Dropdown", "DropdownItem", "EditBoxCustom", "Game.GetLeaderBoard", "HandlerButton", "Http", "LabelEditBox", "Language.Label", "Language.LanguageManager", "Language.Sprite", "ListBankImg", "LoadingCirle", "Lobby.Cmd", "MiniGame", "NodeScaler", "NodeUtils", "Popup", "Random", "SPUtils", "SafeArea", "SelectChipBetView", "SlotPopupBase", "SubpackageDownloader", "TimeUtils", "ToastMessage", "Tween", "Utils", "VersionConfig", "VersionConfig_BACKUP_1641", "VersionConfig_BASE_1641", "VersionConfig_LOCAL_1641", "VersionConfig_REMOTE_1641", "GameConfigManager", "GameURL", "GameUtil", "MusicPlayer", "StringUtils", "UIToggleSlider", "ColumnController", "ColumnControllerB52", "ItemController", "RollerController", "RollerControllerB52", "CustomUI.Dropdown", "CustomUI.PageView", "GameErrorMessage", "GameName", "GameSuccessMessage", "GameData", "BauCuaTo2NetworkClient", "CardGame.Cmd", "CardGameNetworkClient", "MauBinh.NetworkClient", "MiniGameNetworkClient", "Network.Cmd", "Network.InPacket", "Network.NetworkClient", "Network.NetworkListener", "Network.OutPacket", "PacketHeaderAnalyze", "SamNetworkClient", "ShootFishNetworkClient", "SlotNetworkClient", "TX2NetworkClient", "TaiXiuMD5NetWorkClient", "TaiXiuNetWorkClient", "TienLenNetworkClient" ]);
