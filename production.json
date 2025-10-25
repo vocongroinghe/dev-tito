@@ -2,7 +2,9 @@
 	"hotupdateUrl": "http://45.32.99.7/remote-assets/",
 	"bundleUrl": "http://45.32.99.7/remote-assets",
 	"developing": "suonxaochuangot.pro",
-	"production": "bon.tips",
+	"api": "api",
+	"socket": "games",
+	"production": "apisocketpro.club",
 	"taixiu": "taixiu",
 	"taixiumd5": "taixiumd5",
 	"bacay": "bacay",
@@ -15,5 +17,10 @@
 	"tlmn": "tienlenmiennam",
 	"xocdia": "xocdia",
 	"banca": "banca",
-	"baucua": "baucua"
+	"baucua": "baucua",
+	"sicbo": "sicbo",
+	"ld": "lode",
+	"rongho": "rongho",
+	"taixiukub": "taixiu-kubet",
+	"xocdiakub": "xocdiakubet"
 }
